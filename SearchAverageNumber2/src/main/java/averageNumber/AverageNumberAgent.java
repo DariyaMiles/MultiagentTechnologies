@@ -32,9 +32,10 @@ public class AverageNumberAgent extends Agent {
         //добавляем "соседей" агента
         Object[] args = getArguments();
         if (args != null && args.length > 0) {
-            for (int i = 0; i < args.length; i++) {
-                neighbors.add(new AID((String) args[i], AID.ISLOCALNAME));
+            for (Object neighbour : args) {
+                neighbors.add(new AID((String) neighbour, AID.ISLOCALNAME));
             }
+
         } else {
             doDelete();
         }
@@ -43,7 +44,7 @@ public class AverageNumberAgent extends Agent {
         try {
             TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
-            System.out.println("Error in try/catch in averageNumber.AverageNumberAgent.java");
+            System.out.println(e.getMessage());
         }
 
         addBehaviour(new AgentBehaviour());
